@@ -8,18 +8,20 @@ module.exports = function() {
   this.When(/^I type query as "([^"]*)"$/, function (searchQuery, next) {
     this.driver.get('https://www.google.com/ncr');
     this.driver.findElement({ name: 'q' })
-      .sendKeys(searchQuery + '\n').then(next);
+      .sendKeys(searchQuery).then(next);
   });
 
   this.Then(/^I submit$/, function (next) {
     var self = this;
-    this.driver.findElement({ name: 'btnG' })
+    this.driver.findElement({ name: 'btnK' })
       .click()
       .then(function() {
         self.driver.wait(function () {
-          return self.driver.isElementPresent(webdriver.By.id("top_nav"));
+          self.driver.findElements(webdriver.By.id("top_nav")).then(found => {
+            assert.equal(!!found, true, next, 'Expected !!found to be ' + true);
+            next();
+          });
         }, 5000);
-        next();
       });
   });
 
