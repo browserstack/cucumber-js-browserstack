@@ -9,9 +9,9 @@ var config = require(config_file).config;
 var username = process.env.BROWSERSTACK_USERNAME || config.user;
 var accessKey = process.env.BROWSERSTACK_ACCESS_KEY || config.key;
 
-var createBrowserStackSession = function(config, caps){
+var createBrowserStackSession = function (config, caps) {
   return new webdriver.Builder().
-    usingServer('http://'+config.server+'/wd/hub').
+    usingServer(`http://${username}:${accessKey}@${config.server}/wd/hub`).
     withCapabilities(caps).
     build();
 }
@@ -23,13 +23,11 @@ var myHooks = function () {
     var world = this;
     var task_id = parseInt(process.env.TASK_ID || 0);
     var caps = config.capabilities[task_id];
-    caps['browserstack.user'] = username;
-    caps['browserstack.key'] = accessKey;
 
-    if(caps["browserstack.local"]){
+    if (caps["bstack:options"] && caps["bstack:options"]['local']) {
       // Code to start browserstack local before start of test and stop browserstack local after end of test
       bs_local = new browserstack.Local();
-      bs_local.start({'key': accessKey }, function(error) {
+      bs_local.start({ 'key': accessKey }, function (error) {
         if (error) return console.log(error.red);
 
         world.driver = createBrowserStackSession(config, caps);
@@ -42,9 +40,9 @@ var myHooks = function () {
     }
   });
 
-  this.After(function(scenario, callback){
-    this.driver.quit().then(function(){
-      if(bs_local){
+  this.After(function (scenario, callback) {
+    this.driver.quit().then(function () {
+      if (bs_local) {
         bs_local.stop(callback);
       }
       else callback();
