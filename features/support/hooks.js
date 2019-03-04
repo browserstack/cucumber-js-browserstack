@@ -11,7 +11,7 @@ var accessKey = process.env.BROWSERSTACK_ACCESS_KEY || config.key;
 
 var createBrowserStackSession = function (config, caps) {
   return new webdriver.Builder().
-    usingServer(`http://${username}:${accessKey}@${config.server}/wd/hub`).
+    usingServer(`https://${username}:${accessKey}@${config.server}/wd/hub`).
     withCapabilities(caps).
     build();
 }
@@ -27,7 +27,7 @@ var myHooks = function () {
     if (caps["bstack:options"] && caps["bstack:options"]['local']) {
       // Code to start browserstack local before start of test and stop browserstack local after end of test
       bs_local = new browserstack.Local();
-      bs_local.start({ 'key': accessKey }, function (error) {
+      bs_local.start({ key: accessKey }, function (error) {
         if (error) return console.log(error.red);
 
         world.driver = createBrowserStackSession(config, caps);

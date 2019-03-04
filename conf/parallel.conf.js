@@ -2,7 +2,6 @@ exports.config = {
   user: 'BROWSERSTACK_USERNAME',
   key: 'BROWSERSTACK_ACCESS_KEY',
   server: 'hub-cloud.browserstack.com',
-  
   commonCapabilities: {
     'browserstack.use_w3c': true,
     'bstack:options': {
