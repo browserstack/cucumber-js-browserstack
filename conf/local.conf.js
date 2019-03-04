@@ -10,7 +10,7 @@ exports.config = {
       'bstack:options': {
         'os': 'Windows',
         'osVersion': '7',
-        'sessionName': 'single_test',
+        'sessionName': 'local_test',
         'buildName': 'cucumber-js-browserstack',
         'projectName': 'Test App',
         'debug': true,
