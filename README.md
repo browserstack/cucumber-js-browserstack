@@ -2,6 +2,8 @@
 
 [Cucumber-JS](https://github.com/cucumber/cucumber-js) Integration with BrowserStack.
 
+Master branch contains **Selenium 3** samples, for **Selenium 4 - W3C protocol** please checkout [selenium-4](https://github.com/browserstack/cucumber-js-browserstack/tree/selenium-4) branch
+
 ![BrowserStack Logo](https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780)
 
 <img src = "https://cucumber.io/images/cucumber-logo.svg" height = "100">
