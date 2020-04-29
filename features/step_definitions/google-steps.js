@@ -12,17 +12,8 @@ module.exports = function() {
   });
 
   this.Then(/^I submit$/, function (next) {
-    var self = this;
-    this.driver.findElement({ name: 'btnK' })
-      .click()
-      .then(function() {
-        self.driver.wait(function () {
-          self.driver.findElements(webdriver.By.id("top_nav")).then(found => {
-            assert.equal(!!found, true, next, 'Expected !!found to be ' + true);
-            next();
-          });
-        }, 5000);
-      });
+    this.driver.findElement({ name: 'q' })
+      .sendKeys("\n").then(next);
   });
 
   this.Then(/^I should see title "([^"]*)"$/, function (titleMatch, next) {
