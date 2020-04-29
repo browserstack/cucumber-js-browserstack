@@ -6,9 +6,9 @@ var config = require(config_file).config;
 var command = '/usr/bin/env';
 
 process.argv[0] = 'node';
-process.argv[1] = './node_modules/.bin/cucumber-js';
+process.argv[1] = './node_modules/cucumber/bin/cucumber.js';
 
-// Check if os is windows 
+// Check if os is windows
 if(os.platform() == "win32") {
   command = process.argv.shift();
 }
