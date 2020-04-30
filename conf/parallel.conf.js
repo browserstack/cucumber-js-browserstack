@@ -13,10 +13,11 @@ exports.config = {
   },{
     browserName: 'firefox'
   },{
-    browserName: 'safari'
+    browserName: 'safari',
+    browserVersion: '12'
   },{
     browserName: 'internet explorer',
-    browserVersion: '10'
+    browserVersion: '11'
   }]
 }
 
@@ -24,4 +25,3 @@ exports.config = {
 exports.config.capabilities.forEach(function(caps){
   for(var i in exports.config.commonCapabilities) caps[i] = caps[i] || exports.config.commonCapabilities[i];
 });
-
