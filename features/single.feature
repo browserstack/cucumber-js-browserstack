@@ -1,6 +1,6 @@
-Feature: Google's Search Functionality
+Feature: Browserstack test
 
-  Scenario: Can find search results
-    When I type query as "BrowserStack"
-    Then I submit
-    Then I should see title "BrowserStack - Google Search"
+  Scenario: Can add the product in cart
+    Given Visits bstackdemo website
+    When Add a product to the cart
+    Then I should see same product in cart section
