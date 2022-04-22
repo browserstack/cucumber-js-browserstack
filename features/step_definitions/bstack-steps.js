@@ -4,11 +4,11 @@ var assert = require('cucumber-assert');
 
 module.exports = function() {
   var productText = "";
-  this.Given(/^Visits bstackdemo website/, function (next) {
+  this.Given(/^I visit bstackdemo website/, function (next) {
     this.driver.get('https://bstackdemo.com/').then(next);
   });
 
-  this.When(/^Add a product to the cart/, function (next) {
+  this.When(/^I add a product to the cart/, function (next) {
     const productOnScreen = this.driver.findElement({xpath: '//*[@id="1"]/p'})
     productOnScreen.getText().then(function (text) {
       productText = text;
@@ -16,7 +16,7 @@ module.exports = function() {
     this.driver.findElement({xpath: '//*[@id="1"]/div[4]'}).click().then(next);
   });
 
-  this.Then(/^I should see same product in cart section/, function (next) {
+  this.Then(/^I should see the same product in the cart section/, function (next) {
     this.driver.findElement({xpath: "//*[@id=\'__next\']/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]"})
     .getText()
     .then(function (text) {
