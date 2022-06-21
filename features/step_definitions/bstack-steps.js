@@ -1,26 +1,32 @@
 'use strict';
 
-var assert = require('cucumber-assert');
+var assert = require('assert');
+const { Given, When, Then } = require("@cucumber/cucumber");
+const { By, until } = require("selenium-webdriver");
 
-module.exports = function() {
-  var productText = "";
-  this.Given(/^I visit bstackdemo website/, function (next) {
-    this.driver.get('https://bstackdemo.com/').then(next);
-  });
+var productText = "";
+Given(/^I visit bstackdemo website/, async function () {
+  await this.driver.get('https://bstackdemo.com/');
+});
 
-  this.When(/^I add a product to the cart/, function (next) {
-    const productOnScreen = this.driver.findElement({xpath: '//*[@id="1"]/p'})
-    productOnScreen.getText().then(function (text) {
-      productText = text;
-    });
-    this.driver.findElement({xpath: '//*[@id="1"]/div[4]'}).click().then(next);
-  });
+When(/^I add a product to the cart/, async function () {
+  await this.driver.wait(until.elementLocated(By.xpath('//*[@id="1"]/p')));
+  productText = await this.driver.findElement(By.xpath('//*[@id="1"]/p')).getText();
+  await this.driver.findElement({xpath: '//*[@id="1"]/div[4]'}).click();
+});
 
-  this.Then(/^I should see the same product in the cart section/, function (next) {
-    this.driver.findElement({xpath: "//*[@id=\'__next\']/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]"})
-    .getText()
-    .then(function (text) {
-      assert.equal(text, productText, next, 'Expected product to be ' + productText)
-    })
-  });
-};
+Then(/^I should see the same product in the cart section/, async function () {
+  await this.driver.wait(until.elementLocated(By.className("float-cart__content")));
+  await this.driver.findElement(By.className("float-cart__content"));
+
+  await this.driver.wait(until.elementLocated(By.xpath('//*[@id="__next"]/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]')));
+  let productCartText = await this.driver
+          .findElement(
+            By.xpath(
+              '//*[@id="__next"]/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]'
+            )
+          )
+          .getText();
+
+  assert.equal(productCartText, productText, 'Expected product to be ' + productText)
+});
