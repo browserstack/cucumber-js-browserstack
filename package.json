@@ -14,7 +14,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.2",
     "assert": "^2.0.0",
-    "browserstack-node-sdk": "^1.1.1"
+    "browserstack-node-sdk": "^1.2.0"
   },
   "dependencies": {
     "browserstack-local": "^1.0.0",
