@@ -2,8 +2,6 @@
 
 [Cucumber-JS](https://github.com/cucumber/cucumber-js) Integration with BrowserStack for E2E functional testing of UI using Selenium and [browserstack-node-sdk](https://www.npmjs.com/package/browserstack-node-sdk).
 
-Master branch contains **Selenium 3** samples, for **Selenium 4 - W3C protocol** please checkout [selenium-4](https://github.com/browserstack/cucumber-js-browserstack/tree/selenium-4) branch
-
 ![BrowserStack Logo](https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780)
 
 <img src = "https://cucumber.io/images/cucumber-logo.svg" height = "100">
@@ -35,8 +33,8 @@ yarn add --dev browserstack-node-sdk
 3. Add a new command for running tests on browserstack in scripts tag of package.json,
 ```
 "scripts": {
-    "test": "cucumber-js ...args",
-    "browserstack-test": "browserstack-node-sdk cucumber-js ...args"
+    "test": "cucumber-js [args]",
+    "browserstack-test": "browserstack-node-sdk cucumber-js [args]"
   },
 ```
 
