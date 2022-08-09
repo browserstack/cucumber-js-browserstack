@@ -9,9 +9,9 @@
   },
   "scripts": {
     "test": "npm run single && npm run local && npm run parallel",
-    "single": "CONFIG_FILE=single ./node_modules/cucumber/bin/cucumber.js features/single.feature",
-    "local": "CONFIG_FILE=local ./node_modules/cucumber/bin/cucumber.js features/local.feature",
-    "parallel": "CONFIG_FILE=parallel ./scripts/cucumber-runner.js features/single.feature"
+    "single": "cross-env CONFIG_FILE=single ./node_modules/cucumber/bin/cucumber.js features/single.feature",
+    "local": "cross-env CONFIG_FILE=local ./node_modules/cucumber/bin/cucumber.js features/local.feature",
+    "parallel": "cross-env CONFIG_FILE=parallel ./scripts/cucumber-runner.js features/single.feature"
   },
   "devDependencies": {
     "cucumber": "1.3.3",
@@ -19,6 +19,7 @@
     "selenium-webdriver": "^4.0.0-alpha.1"
   },
   "dependencies": {
-    "browserstack-local": "^1.0.0"
+    "browserstack-local": "^1.0.0",
+    "cross-env": "^5.2.0"
   }
 }

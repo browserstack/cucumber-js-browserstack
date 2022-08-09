@@ -27,4 +27,3 @@ exports.config = {
 exports.config.capabilities.forEach(function(caps){
     Object.assign(caps, exports.config.commonCapabilities);
 });
-
