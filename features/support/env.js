@@ -1,7 +1,5 @@
 'use strict';
 
-var configure = function () {
-    this.setDefaultTimeout(60 * 1000);
-};
+const { setDefaultTimeout } = require("@cucumber/cucumber");
 
-module.exports = configure;
+setDefaultTimeout(60 * 1000);

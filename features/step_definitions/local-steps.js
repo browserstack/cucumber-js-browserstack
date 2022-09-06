@@ -1,19 +1,13 @@
 'use strict';
 
-var assert = require('cucumber-assert');
-var webdriver = require('selenium-webdriver');
+var assert = require('assert');
+const { When, Then } = require("@cucumber/cucumber");
 
-module.exports = function() {
+When(/^I open health check$/, async function () {
+  await this.driver.get('http://bs-local.com:45691/check');
+});
 
-  this.When(/^I open health check$/, function (next) {
-    this.driver.get('http://bs-local.com:45691/check');
-    next();
-  });
-
-  this.Then(/^I should see "([^"]*)"$/, function (sourceMatch, next) {
-    this.driver.getPageSource()
-      .then(function(source) {
-        assert.equal(source.indexOf(sourceMatch) > -1, true, next, 'Expected source to contain ' + sourceMatch);
-      });
-  });
-};
+Then(/^I should see "([^"]*)"$/, async function (sourceMatch) {
+  let source = await this.driver.getPageSource();
+  assert.equal(source.indexOf(sourceMatch) > -1, true, 'Expected source to contain ' + sourceMatch);
+});
