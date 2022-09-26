@@ -7,7 +7,7 @@ exports.config = {
     browserName: 'chrome',
     name: "BStack local cucumber-js",
     build: "browserstack-build-1",
-    source: "cucumber:sample-selenium-3-v1.0",
+    source: "cucumber-js:sample-selenium-3-v1.0",
     'browserstack.local': true
   }]
 }
