@@ -5,7 +5,8 @@ exports.config = {
 
   commonCapabilities: {
     name: "parallel_test",
-    build: "cucumber-js-browserstack"
+    build: "cucumber-js-browserstack",
+    source: "cucumber:sample-selenium-3-v1.0",
   },
 
   capabilities: [{
