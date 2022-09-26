@@ -4,8 +4,8 @@ exports.config = {
   server: 'hub-cloud.browserstack.com',
 
   commonCapabilities: {
-    name: "parallel_test",
-    build: "cucumber-js-browserstack",
+    name: "BStack parallel cucumber-js",
+    build: "browserstack-build-1",
     source: "cucumber:sample-selenium-3-v1.0",
   },
 

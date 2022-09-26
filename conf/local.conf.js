@@ -5,8 +5,8 @@ exports.config = {
 
   capabilities: [{
     browserName: 'chrome',
-    name: "local_test",
-    build: "cucumber-js-browserstack",
+    name: "BStack local cucumber-js",
+    build: "browserstack-build-1",
     source: "cucumber:sample-selenium-3-v1.0",
     'browserstack.local': true
   }]
