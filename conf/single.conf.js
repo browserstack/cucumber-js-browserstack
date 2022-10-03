@@ -11,7 +11,7 @@ exports.config = {
         'useW3C': true,
         'os': 'Windows',
         'osVersion': '7',
-        'sessionName': 'Bstack single cucumber-js',
+        'sessionName': 'BStack single cucumber-js',
         'buildName': 'browserstack-build-1',
         'source': 'cucumber-js:sample-selenium-4-v1.0',
         'projectName': 'Test App',
