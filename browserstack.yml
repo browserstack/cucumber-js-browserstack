@@ -18,7 +18,7 @@ accessKey: YOUR_ACCESS_KEY
 buildName: browserstack-build-1
 # Use `projectName` to set the name of your project. Example, Marketing Website
 projectName: BrowserStack Samples
-source: cucumber-js:sample-master-v1.0
+source: cucumber-js:sample-master:v1.0
 # =======================================
 # Platforms (Browsers / Devices to test)
 # =======================================
