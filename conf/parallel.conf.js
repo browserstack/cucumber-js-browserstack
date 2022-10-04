@@ -6,7 +6,6 @@ exports.config = {
   commonCapabilities: {
     name: "BStack parallel cucumber-js",
     build: "browserstack-build-1",
-    source: "cucumber-js:sample-selenium-3-v1.0",
   },
 
   capabilities: [{
