@@ -25,6 +25,7 @@ var myHooks = function () {
     var caps = config.capabilities[task_id];
     caps['browserstack.user'] = username;
     caps['browserstack.key'] = accessKey;
+    caps['browserstack.source'] = 'cucumber-js:sample-selenium-3:v1.0'
 
     if(caps["browserstack.local"]){
       // Code to start browserstack local before start of test and stop browserstack local after end of test
