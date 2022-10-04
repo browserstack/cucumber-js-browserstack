@@ -7,7 +7,6 @@ exports.config = {
     'bstack:options': {
       'sessionName': 'BStack parallel cucumber-js',
       'buildName': 'browserstack-build-1',
-      'source': 'cucumber-js:sample-selenium-4-v1.0',
       'projectName': 'Test App',
       'debug': true,
     },
