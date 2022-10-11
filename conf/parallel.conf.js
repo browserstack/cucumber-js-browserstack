@@ -3,9 +3,9 @@ exports.config = {
   key: 'BROWSERSTACK_ACCESS_KEY',
   server: 'hub.browserstack.com',
   commonCapabilities: {
-    'browserstack.use_w3c': true,
     'bstack:options': {
       'sessionName': 'BStack parallel cucumber-js',
+      'useW3C': true,
       'buildName': 'browserstack-build-1',
       'projectName': 'Test App',
       'debug': true,

@@ -6,8 +6,8 @@ exports.config = {
   capabilities: [
     {
       'browserName': 'Chrome',
-      'browserstack.use_w3c': true,
       'bstack:options': {
+        'useW3C': true,
         'os': 'Windows',
         'osVersion': '7',
         'sessionName': 'BStack local cucumber-js',
