@@ -5,7 +5,7 @@ exports.config = {
   commonCapabilities: {
     'browserstack.use_w3c': true,
     'bstack:options': {
-      'sessionName': 'BStack parallel_test',
+      'sessionName': 'BStack parallel cucumber-js',
       'buildName': 'browserstack-build-1',
       'projectName': 'Test App',
       'debug': true,
