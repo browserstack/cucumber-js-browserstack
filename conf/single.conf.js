@@ -1,7 +1,7 @@
 exports.config = {
   user: 'BROWSERSTACK_USERNAME',
   key: 'BROWSERSTACK_ACCESS_KEY',
-  server: 'hub-cloud.browserstack.com',
+  server: 'hub.browserstack.com',
 
   capabilities: [
     {
@@ -10,8 +10,8 @@ exports.config = {
       'bstack:options': {
         'os': 'Windows',
         'osVersion': '7',
-        'sessionName': 'single_test',
-        'buildName': 'cucumber-js-browserstack',
+        'sessionName': 'BStack single_test',
+        'buildName': 'browserstack-build-1',
         'projectName': 'Test App',
         'debug': true,
       },
