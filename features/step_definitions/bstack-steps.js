@@ -9,11 +9,13 @@ module.exports = function() {
   });
 
   this.When(/^I add a product to the cart/, function (next) {
-    const productOnScreen = this.driver.findElement({xpath: '//*[@id="1"]/p'})
-    productOnScreen.getText().then(function (text) {
-      productText = text;
-    });
-    this.driver.findElement({xpath: '//*[@id="1"]/div[4]'}).click().then(next);
+    this.driver.findElement({xpath: '//*[@id="1"]/p'})
+      .then((productOnScreen) => {
+        productOnScreen.getText().then((text) => {
+          productText = text;
+          this.driver.findElement({xpath: '//*[@id="1"]/div[4]'}).click().then(next);
+        });
+      })
   });
 
   this.Then(/^I should see the same product in the cart section/, function (next) {

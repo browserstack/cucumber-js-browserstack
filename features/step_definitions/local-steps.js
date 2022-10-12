@@ -6,8 +6,8 @@ var webdriver = require('selenium-webdriver');
 module.exports = function() {
 
   this.When(/^I open health check$/, function (next) {
-    this.driver.get('http://bs-local.com:45691/check');
-    next();
+    this.driver.get('http://bs-local.com:45691/check')
+      .then(next);
   });
 
   this.Then(/^I should see "([^"]*)"$/, function (sourceMatch, next) {
