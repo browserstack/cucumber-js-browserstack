@@ -10,8 +10,8 @@ jobs:
   build:
     strategy:
       matrix:
-        version: [ 12, 14, 16 ]
-        os: [ macos-latest, windows-latest ]
+        version: [ 12.22.12, 14.21.1, 16.16.0 ]
+        os: [ macos-latest, windows-latest, ubuntu-latest ]
     runs-on: ${{ matrix.os }}
     name: CucumberJS repo ${{ matrix.version }} - ${{ matrix.os }} Sample
     env:

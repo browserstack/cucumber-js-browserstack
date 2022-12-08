@@ -15,7 +15,7 @@ accessKey: YOUR_ACCESS_KEY
 # Ensure you add a dynamic identifier, like an incremental build number from your
 # CI/CD or timestamp at the end of every build; otherwise tests from different
 # executions will be grouped together on BrowserStack
-buildName: browserstack-build-1
+buildName: build-1
 # Use `projectName` to set the name of your project. Example, Marketing Website
 projectName: BrowserStack Samples
 source: cucumber-js:sample-master:v1.0
