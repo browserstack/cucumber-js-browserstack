@@ -1,0 +1,34 @@
+#This job tests changes made in master branch against PRs.
+
+name: Review changes from PRs
+run-name: ${{ github.actor }} has created/updated a PR
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        version: [ 14, 16, 18 ]
+        os: [ macos-latest, windows-latest, ubuntu-latest ]
+    runs-on: ${{ matrix.os }}
+    name: CucumberJS repo ${{ matrix.version }} - ${{ matrix.os }} Sample
+    env:
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.version }}
+    
+      - name: Setup environment for testing
+        run: npm install
+
+      - name: Run sample tests 
+        run: npm run sample-test
+
+      - name: Run local tests
+        run: npm run sample-local-test
