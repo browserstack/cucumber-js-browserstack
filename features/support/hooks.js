@@ -11,7 +11,7 @@ var accessKey = process.env.BROWSERSTACK_ACCESS_KEY || config.key;
 
 var createBrowserStackSession = function(config, caps){
   return new webdriver.Builder().
-    usingServer('http://'+config.server+'/wd/hub').
+    usingServer('https://'+config.server+'/wd/hub').
     withCapabilities(caps).
     build();
 }
