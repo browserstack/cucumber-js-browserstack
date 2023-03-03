@@ -9,7 +9,8 @@
   },
   "scripts": {
     "sample-test": "browserstack-node-sdk cucumber-js features/single.feature",
-    "sample-local-test": "browserstack-node-sdk cucumber-js features/local.feature"
+    "sample-local-test": "browserstack-node-sdk cucumber-js features/local.feature",
+    "postinstall": "npm update browserstack-node-sdk"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.2",
