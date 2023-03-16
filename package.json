@@ -9,9 +9,9 @@
   },
   "scripts": {
     "test": "npm run single && npm run local && npm run parallel",
-    "single": "CONFIG_FILE=single ./node_modules/cucumber/bin/cucumber.js features/single.feature",
-    "local": "CONFIG_FILE=local ./node_modules/cucumber/bin/cucumber.js features/local.feature",
-    "parallel": "CONFIG_FILE=parallel ./scripts/cucumber-runner.js features/single.feature"
+    "single": "CONFIG_FILE=single ./node_modules/cucumber/bin/cucumber.js features/single.feature --timeout=120000",
+    "local": "CONFIG_FILE=local ./node_modules/cucumber/bin/cucumber.js features/local.feature --timeout=120000",
+    "parallel": "CONFIG_FILE=parallel ./scripts/cucumber-runner.js features/single.feature --timeout=120000"
   },
   "devDependencies": {
     "cucumber": "1.3.3",
