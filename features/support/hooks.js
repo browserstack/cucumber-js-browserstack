@@ -1,4 +1,5 @@
 'use strict';
+const https = require("https");
 
 var webdriver = require('selenium-webdriver');
 var browserstack = require('browserstack-local');
@@ -10,10 +11,16 @@ var username = process.env.BROWSERSTACK_USERNAME || config.user;
 var accessKey = process.env.BROWSERSTACK_ACCESS_KEY || config.key;
 
 var createBrowserStackSession = function(config, caps){
-  return new webdriver.Builder().
-    usingServer('https://'+config.server+'/wd/hub').
-    withCapabilities(caps).
-    build();
+  return new webdriver.Builder()
+    .usingServer('https://'+config.server+'/wd/hub')
+    .withCapabilities(caps)
+      .usingHttpAgent(
+        new https.Agent({
+          keepAlive: true,
+          keepAliveMsecs: 1000000,
+        })
+      )
+    .build();
 }
 
 var myHooks = function () {
