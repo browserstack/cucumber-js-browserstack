@@ -14,12 +14,12 @@ var createBrowserStackSession = function(config, caps){
   return new webdriver.Builder()
     .usingServer('https://'+config.server+'/wd/hub')
     .withCapabilities(caps)
-      .usingHttpAgent(
-        new https.Agent({
-          keepAlive: true,
-          keepAliveMsecs: 1000000,
-        })
-      )
+    .usingHttpAgent(
+      new https.Agent({
+        keepAlive: true,
+        keepAliveMsecs: 1000000,
+      })
+    )
     .build();
 }
 
