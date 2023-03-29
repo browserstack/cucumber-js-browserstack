@@ -31,7 +31,7 @@ var myHooks = function () {
     var task_id = parseInt(process.env.TASK_ID || 0);
     var caps = config.capabilities[task_id];
 
-    caps['bstack:options']['source'] = 'cucumber-js:sample-selenium-4:v1.0'
+    caps['bstack:options']['source'] = 'cucumber-js:sample-selenium-4:v1.1'
 
     if (caps["bstack:options"] && caps["bstack:options"]['local']) {
       // Code to start browserstack local before start of test and stop browserstack local after end of test
