@@ -19,7 +19,7 @@
     "selenium-webdriver": "^3.6.0"
   },
   "dependencies": {
-    "browserstack-local": "^1.0.0",
+    "browserstack-local": "^1.5.2",
     "cross-env": "^5.2.0"
   }
 }
