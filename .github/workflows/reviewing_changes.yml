@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       max-parallel: 3
       matrix:
-        node: ['14', '16', '18']
+        node: ['14', '16', '18', '20']
         os: [ macos-latest, windows-latest, ubuntu-latest ]
     name: Cucumber-js Repo ${{ matrix.node }} - ${{ matrix.os }} Sample
     env:
