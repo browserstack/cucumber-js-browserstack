@@ -51,6 +51,11 @@ jobs:
               console.log('Failed to create check run')
             }
 
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
       - name: Setup staging npm package
         if: ${{ github.event.inputs.package_url != '' }}
         run: |
@@ -62,11 +67,6 @@ jobs:
           npm install -g npm-cli-adduser && npm-cli-adduser -u dummy -p dummy -e dummy@gmail.com -r http://localhost:4873
           npm publish staging_package.tgz --registry http://localhost:4873/
         shell: bash
-
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
 
       - name: Install dependencies
         run: npm install
