@@ -26,6 +26,7 @@ jobs:
     env:
       BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
       BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      PACKAGE_URL: ${{ github.event.inputs.package_url }}
 
     steps:
       - uses: actions/checkout@v3
@@ -60,7 +61,7 @@ jobs:
         if: ${{ github.event.inputs.package_url != '' }}
         run: |
           echo 'Publishing tar.gz to local registry'
-          curl -o staging_package.tgz '${{ github.event.inputs.package_url }}'
+          curl -o staging_package.tgz "$PACKAGE_URL"
           npm install verdaccio -g
           verdaccio &
           npm config set registry http://localhost:4873
