@@ -62,7 +62,7 @@ jobs:
         run: |
           echo 'Publishing tar.gz to local registry'
           curl -o staging_package.tgz "$PACKAGE_URL"
-          npm install verdaccio@5.32.3 -g
+          npm install verdaccio@5.32.2 -g
           verdaccio &
           npm config set registry http://localhost:4873
           npm install -g npm-cli-adduser && npm-cli-adduser -u dummy -p dummy -e dummy@gmail.com -r http://localhost:4873
