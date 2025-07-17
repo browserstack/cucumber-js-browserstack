@@ -57,16 +57,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Register user with Verdaccio
-        run: |
-          curl -X PUT http://localhost:4873/-/user/org.couchdb.user:dummy \
-            -H "Content-Type: application/json" \
-            -d '{
-              "name": "dummy",
-              "password": "dummy",
-              "email": "dummy@gmail.com"
-            }'
-      
       - name: Set up npm authentication
         run: |
           echo "//localhost:4873/:_auth=$(echo -n 'dummy:dummy' | base64)" >> ~/.npmrc
@@ -78,7 +68,17 @@ jobs:
             echo "Waiting for Verdaccio to be ready..."; sleep 2;
           done
           npm config set registry http://localhost:4873
-      
+
+      - name: Register user with Verdaccio
+        run: |
+          curl -X PUT http://localhost:4873/-/user/org.couchdb.user:dummy \
+            -H "Content-Type: application/json" \
+            -d '{
+              "name": "dummy",
+              "password": "dummy",
+              "email": "dummy@gmail.com"
+            }'
+
       - name: Setup staging npm package
         if: ${{ github.event.inputs.package_url != '' }}
         run: |
