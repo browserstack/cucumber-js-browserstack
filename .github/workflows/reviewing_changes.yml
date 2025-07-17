@@ -68,7 +68,7 @@ jobs:
             echo "Waiting for Verdaccio to be ready..."; sleep 2;
           done
           npm config set registry http://localhost:4873
-          npx npm-cli-adduser -u dummy -p dummy -e dummy@gmail.com -r http://localhost:4873
+          echo -e "dummy\ndummy\ndummy@gmail.com" | npm adduser --registry http://localhost:4873
           npm publish staging_package.tgz --registry http://localhost:4873/
         shell: bash
 
