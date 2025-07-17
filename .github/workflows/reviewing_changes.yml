@@ -58,6 +58,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Set up npm authentication
+        shell: bash
         run: |
           echo "//localhost:4873/:_auth=$(echo -n 'dummy:dummy' | base64)" >> ~/.npmrc
           echo "email=dummy@gmail.com" >> ~/.npmrc
@@ -70,6 +71,7 @@ jobs:
           npm config set registry http://localhost:4873
 
       - name: Register user with Verdaccio
+        shell: bash
         run: |
           curl -X PUT http://localhost:4873/-/user/org.couchdb.user:dummy \
             -H "Content-Type: application/json" \
