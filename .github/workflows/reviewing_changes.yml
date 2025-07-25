@@ -57,15 +57,35 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - name: Set up npm authentication
+        shell: bash
+        run: |
+          echo "//localhost:4873/:_auth=$(echo -n 'dummy:dummy' | base64)" >> ~/.npmrc
+          echo "email=dummy@gmail.com" >> ~/.npmrc
+          echo "always-auth=true" >> ~/.npmrc
+          npx verdaccio@5.32.2 &
+          for i in {1..30}; do
+            if curl -sf http://localhost:4873/-/ping > /dev/null; then break; fi
+            echo "Waiting for Verdaccio to be ready..."; sleep 2;
+          done
+          npm config set registry http://localhost:4873
+
+      - name: Register user with Verdaccio
+        shell: bash
+        run: |
+          curl -X PUT http://localhost:4873/-/user/org.couchdb.user:dummy \
+            -H "Content-Type: application/json" \
+            -d '{
+              "name": "dummy",
+              "password": "dummy",
+              "email": "dummy@gmail.com"
+            }'
+
       - name: Setup staging npm package
         if: ${{ github.event.inputs.package_url != '' }}
         run: |
           echo 'Publishing tar.gz to local registry'
           curl -o staging_package.tgz "$PACKAGE_URL"
-          npm install verdaccio@5.32.2 -g
-          verdaccio &
-          npm config set registry http://localhost:4873
-          npm install -g npm-cli-adduser && npm-cli-adduser -u dummy -p dummy -e dummy@gmail.com -r http://localhost:4873
           npm publish staging_package.tgz --registry http://localhost:4873/
         shell: bash
 
