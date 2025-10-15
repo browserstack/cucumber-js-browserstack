@@ -3,13 +3,13 @@
 const { Given, When, Then, Before, BeforeStep } = require('@cucumber/cucumber');
 const assert = require('assert');
 
-// Before({ tags: '@moduleA', order: 1 }, async function () {
+// Before({ tags: '@moduleC', order: 1 }, async function () {
 //   await this.driver.get('https://bstackdemo.com/');
 //   const title = await this.driver.getTitle();
 //   assert.match(title, /StackDemo/i, 'Title does not match /StackDemo/i');
 // });
 
-Given('module A - flaky test - random product selection', async function () {
+Given('module C - flaky test - random product selection', async function () {
   const randomProductIndex = Math.random() > 0.5 ? "1" : "2000";
   const productOnScreen = await this.driver.findElement({ xpath: `//*[@id="${randomProductIndex}"]/p` });
   const productOnScreenText = await productOnScreen.getText();
@@ -30,45 +30,43 @@ Given('module A - flaky test - random product selection', async function () {
   assert.ok(textMatch, 'Cart product text did not match selected product');
 });
 
-Given('module A - always failing test - missing element 1', async function () {
+Given('module C - always failing test - missing element 1', async function () {
   await this.driver.findElement({ xpath: '//*[@id="non-existent-1"]/p' }).then(el => el.click());
 });
 
-Given('module A - always failing test - same stacktrace 1', async function () {
+Given('module C - always failing test - same stacktrace 1', async function () {
   await this.driver.findElement({ xpath: '//*[@id="common-error"]/p' }).then(el => el.click());
 });
 
-Given('module A - always failing test - same stacktrace 2', async function () {
+Given('module C - always failing test - same stacktrace 2', async function () {
   await this.driver.findElement({ xpath: '//*[@id="common-error"]/p' }).then(el => el.click());
 });
 
-Given('module A - always passing test - example B', async function () {
-  assert(true);
-});
-Given('module A - always passing test - example C', async function () {
-  assert(true);
-});
-Given('module A - always passing test - example D', async function () {
-  assert(true);
-});
-Given('module A - always passing test - example E', async function () {
+Given('module C - Always Passing Test - example F', async function () {
   assert(true);
 });
 
-Given('module A - passing test - verify page title', async function () {
+Given('module C - Always Passing Test - example G', async function () {
+  assert(true);
+});
+
+Given('module C - Always Passing Test - example H', async function () {
+  assert(true);
+});
+
+Given('module C - Always Passing Test - example I', async function () {
+  assert(true);
+});
+
+Given('module C - passing test - verify page title', async function () {
   const title = await this.driver.getTitle();
   assert.match(title, /StackDemo/i);
 });
 
-Given('module A - Test with framework-level retry - 2 retries configured', async function () {
+Given('module C - Test with framework-level retry - 2 retries configured', async function () {
   assert(Math.random() > 0.7, "Test failed, retrying...");
 });
 
-Given('module A - Another Test with framework-level retry - 2 retries configured', async function () {
+Given('module C - Another Test with framework-level retry - 2 retries configured', async function () {
   assert(Math.random() > 0.7, "Test failed, retrying...");
-});
-
-Given('module A - always passing test - example A', async function () {
-  const url = await this.driver.getCurrentUrl();
-  assert.ok(url.includes("bstackdemo"));
 });
