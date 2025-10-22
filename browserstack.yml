@@ -23,6 +23,8 @@ buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${
 # Set `source` in the syntax `<fw-name>:sample-<branch-name>:<version-number>
 source: cucumber-js:sample-master:v1.0
 
+CUSTOM_TAG_1: "bstack_sample"
+
 # =======================================
 # Platforms (Browsers / Devices to test)
 # =======================================
