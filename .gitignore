@@ -6,3 +6,4 @@ browserstack.err
 **/.DS_Store
 .vscode/
 .env
+package-lock.json
