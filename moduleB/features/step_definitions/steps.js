@@ -3,12 +3,6 @@
 const { Given, When, Then, Before, BeforeStep } = require('@cucumber/cucumber');
 const assert = require('assert');
 
-// Before({ tags: '@moduleB', order: 1 }, async function () {
-//   await this.driver.get('https://bstackdemo.com/');
-//   const title = await this.driver.getTitle();
-//   assert.match(title, /StackDemo/i, 'Title does not match /StackDemo/i');
-// });
-
 Given('module B - Flaky test - random product selection', async function () {
   const randomProductIndex = Math.random() > 0.7 ? "1" : "2000";
   const productOnScreen = await this.driver.findElement({ xpath: `//*[@id="${randomProductIndex}"]/p` });
