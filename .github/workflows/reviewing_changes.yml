@@ -19,8 +19,10 @@ jobs:
     strategy:
       fail-fast: false
       max-parallel: 3
+      # Node 14 not supported on macOS: No arm64 binary for Node 14.
+      # Ubuntu + Node 14 & Windows + Node 14: Syntax error (||= operator) in transitive dependency. Latest browserstack-node-sdk pulls packages incompatible with Node 14.
       matrix:
-        node: ['14', '16', '18', '20']
+        node: ['16', '18', '20', "24"]
         os: [ macos-latest, windows-latest, ubuntu-latest ]
     name: Cucumber-js Repo ${{ matrix.node }} - ${{ matrix.os }} Sample
     env:
@@ -89,8 +91,8 @@ jobs:
           npm publish staging_package.tgz --registry http://localhost:4873/
         shell: bash
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies (Node 16+)
+        run: npm ci
 
       - name: Run sample tests
         run: npm run sample-test
