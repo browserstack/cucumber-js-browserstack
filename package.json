@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "browserstack-local": "^1.0.0",
-    "cross-env": "^5.2.0",
+    "cross-env": "^7.0.3",
     "selenium-webdriver": "4.1.2"
   }
 }
